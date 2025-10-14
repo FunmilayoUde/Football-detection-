@@ -141,7 +141,7 @@ for frame in frame_generator:
     else:
         pitch_ball_xy = None
 
-    # === VISUALIZATION ===
+        # === VISUALIZATION ===
     annotated_pitch, annotated_voronoi, annotated_blended = render_pitch_views(
         CONFIG,
         pitch_players_xy=pitch_players_xy,
@@ -155,7 +155,28 @@ for frame in frame_generator:
         opacity=0.5
     )
 
+    # === SAVE PLAYER DATA ===
+    if len(player_detections) > 0:
+        for idx, det in enumerate(player_detections):
+            track_id = int(det.tracker_id) if det.tracker_id is not None else -1
+            team_id = int(det.class_id)
+            x_m, y_m = pitch_players_xy[idx]
+            player_data.append({
+                "frame": frame_index,
+                "track_id": track_id,
+                "team_id": team_id,
+                "x_m": x_m,
+                "y_m": y_m
+            })
+
     video_writer.write(final_frame)
 
+# === END OF VIDEO ===
 video_writer.release()
+
+# === SAVE PLAYER DATA TO CSV ===
+df = pd.DataFrame(player_data)
+csv_output_path = OUTPUT_VIDEO_PATH.replace(".mp4", ".csv")
+df.to_csv(csv_output_path, index=False)
 print("✅ Video saved to:", OUTPUT_VIDEO_PATH)
+print("✅ Player data saved to:", csv_output_path)
