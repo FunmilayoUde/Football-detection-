@@ -1,0 +1,31 @@
+{
+  "video": "C:\\Users\\User\\Downloads\\Chimdi\\Football detection\\Football_test\\Video_sample\\HIL-HAZ.mp4",
+  "detector": {
+    "weights": "runs_main\\y8s_e100\\weights\\best.pt",
+    "conf": 0.25,
+    "nms_iou": 0.55,
+    "imgsz": 1280
+  },
+  "field_detector": {
+    "weights": null,
+    "conf": 0.3
+  },
+  "classes": {
+    "BALL_ID": 0,
+    "GOALKEEPER_ID": 1,
+    "PLAYER_ID": 2,
+    "REFEREE_ID": 3
+  },
+  "tracker": {
+    "algo": "BoT-SORT",
+    "gmc": true,
+    "ball_tracker": true,
+    "reid": false
+  },
+  "team_classifier": {
+    "model": "google/siglip-base-patch16-224",
+    "umap_components": 3,
+    "kmeans_k": 2
+  },
+  "src_fps": 30.000914260513934
+}

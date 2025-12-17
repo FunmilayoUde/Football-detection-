@@ -127,3 +127,5 @@ def overlay_inset_on_frame(frame: np.ndarray, insets: list[np.ndarray], opacity:
 
     overlay[y_offset:y_offset+pitch_rgba.shape[0], x_offset:x_offset+pitch_rgba.shape[1]] = roi
     return cv2.cvtColor(overlay, cv2.COLOR_BGRA2BGR)
+
+

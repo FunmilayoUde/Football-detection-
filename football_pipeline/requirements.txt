@@ -1,0 +1,25 @@
+# core
+pandas==2.2.2
+opencv-python==4.9.0.80
+
+# detection / tracking
+ultralytics==8.3.22
+supervision==0.22.0
+
+# deep learning (CPU)
+torch==2.2.2
+torchvision==0.17.2
+
+# team classification (SigLIP + clustering)
+transformers==4.41.2
+safetensors>=0.4.3
+pillow>=10.0.0
+timm>=0.9.16
+more-itertools>=10.2.0
+umap-learn==0.5.5
+scikit-learn==1.4.2
+scipy>=1.11.4
+numba==0.58.1
+llvmlite==0.41.1
+pynndescent>=0.5.11
+
